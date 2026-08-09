@@ -1,0 +1,11 @@
+# 1. 忽略你刚刚编译出来的二进制文件（最关键！）
+q
+q.exe
+data.json
+# 2. 忽略 IDE 配置（如果你用 VSCode 或 Goland）
+.vscode/
+.idea/
+
+# 3. 忽略操作系统生成的垃圾文件
+.DS_Store
+Thumbs.db

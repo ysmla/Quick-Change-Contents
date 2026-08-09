@@ -1,4 +1,4 @@
-# Quick-Change-Dict
+# Quick-Change-Contents
 
 A cross-platform command-line quick directory navigation tool. Save frequently used directories as shortcuts and jump to them instantly via clipboard.
 

@@ -1,4 +1,4 @@
-# Quick-Change-Dict
+# Quick-Change-Contents
 
 跨平台命令行快速目录跳转工具。将常用目录保存为快捷方式，通过剪贴板一键跳转。
 
