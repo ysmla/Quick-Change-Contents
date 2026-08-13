@@ -8,8 +8,8 @@ A cross-platform command-line quick directory navigation tool. Save frequently u
 
 ```bash
 # Clone and build
-git clone https://github.com/ysmla/Quick-Change-Dict.git
-cd Quick-Change-Dict
+git clone https://github.com/ysmla/Quick-Change-Contents.git
+cd Quick-Change-Contents
 go build -o q .
 
 # Add to PATH (optional, for global access)

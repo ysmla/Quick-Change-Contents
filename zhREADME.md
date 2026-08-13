@@ -8,8 +8,8 @@
 
 ```bash
 # 克隆并编译
-git clone https://github.com/ysmla/Quick-Change-Dict.git
-cd Quick-Change-Dict
+git clone https://github.com/ysmla/Quick-Change-Contents.git
+cd Quick-Change-Contents
 go build -o q .
 
 # 添加到 PATH（可选，方便全局使用）
