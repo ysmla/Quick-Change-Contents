@@ -9,3 +9,7 @@ data.json
 # 3. 忽略操作系统生成的垃圾文件
 .DS_Store
 Thumbs.db
+
+# 4. 忽略本地构建缓存与临时目录
+.gocache/
+.tmp/

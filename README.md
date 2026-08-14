@@ -20,34 +20,35 @@ go build -o q .
 
 | Command | Usage | Description |
 |---------|-------|-------------|
-| `ls` | `q ls` | List files in the current directory with colored output |
-| `cd` | `q cd <index>` | Copy a `cd <path>` command to clipboard by file index |
+| `ls` | `q ls` | List entries in the current directory (directories are marked with a trailing `/`) |
+| `cd` | `q cd <index>` | Copy a `cd <path>` command to clipboard by entry index (paths with spaces are quoted) |
 | `mi` | `q mi <name>` | Save the current directory as a shortcut (no duplicate names allowed) |
 | `cg` | `q cg <name>` | Copy a saved shortcut's `cd` command to clipboard |
-| `sh` | `q sh` | Show all saved shortcuts |
+| `sh` | `q sh` | Show all saved shortcuts, sorted by name |
 | `de` | `q de <name>` | Delete a saved shortcut |
 | `fi` | `q fi <name>` | Find and display a saved shortcut |
+| `help` | `q help` | Show usage help |
 
 ## Examples
 
 ```bash
-# List current directory
+# List current directory (directories end with /)
 > q ls
-  0 : Documents
-  1 : Projects
-  2 : Downloads
+  0 : Documents/
+  1 : Projects/
+  2 : Downloads/
 
 # Save a shortcut
 > q mi projects        # saves current dir as "projects"
 
 # Use a shortcut (copies cd command to clipboard)
 > q cg projects
-已将 cd /home/user/code/Projects 复制到剪贴板
+已将 cd "/home/user/code/Projects" 复制到剪贴板
 
-# Show all shortcuts
+# Show all shortcuts (sorted by name)
 > q sh
-  0 : projects: /home/user/code/Projects
-  1 : downloads: /home/user/Downloads
+downloads   : /home/user/Downloads
+projects    : /home/user/code/Projects
 
 # Delete a shortcut
 > q de downloads
@@ -60,4 +61,13 @@ projects: /home/user/code/Projects
 
 ## Data Storage
 
-All shortcuts are stored in `data.json` located next to the executable. The file is automatically created on first run.
+Shortcuts are stored in `data.json` in the **user config directory**:
+
+- Windows: `%AppData%\q\data.json`
+- Linux/macOS: `~/.config/q/data.json` (or `$XDG_CONFIG_HOME/q/data.json`)
+
+This works even when the executable is installed in a read-only location. The file is created automatically on first run. To override the location, set the `Q_DATA_DIR` environment variable to any writable directory.
+
+> **Migration:** if you used an older version that stored `data.json` next to the executable, the file is automatically copied to the new location on the first run.
+
+If `data.json` becomes corrupted (invalid JSON), it is automatically backed up as `broken_data_<timestamp>.json` and a fresh file is created — your data is never silently lost.
